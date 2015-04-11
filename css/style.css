@@ -10,11 +10,10 @@
 @-moz-viewport      {width:device-width;}
 @-ms-viewport       {width:device-width;}
 @-o-viewport        {width:device-width;}
-@viewport           {width:device-width;}
 
 /* 阿里妈妈推广框样式 */tkbox{width:238px !important;background-color:#fff;border:1px solid #dbdbdb;text-align:center;margin-bottom:8px;}
-body{font-size:16px;background:#f6f6f6;font-family:"微软雅黑",verdana,arial,sans-serif;}
-.container{width:95%;margin:0 auto;}
+body{font-size:100%;background:#f6f6f6;font-family:"微软雅黑",verdana,arial,sans-serif;}
+.container{font-size:14px;font-size:.875rem;width:95%;margin:0 auto;}
 a{color:#4cb5ff;transition:color 0.5s ease 0s;}
     a:hover{color:#466094;}
 	li img{width:100%;max-width:100%;}
@@ -36,7 +35,7 @@ a{color:#4cb5ff;transition:color 0.5s ease 0s;}
 			#search-header button:active{background-position:-80px 0;}
 			
 /* 通用脚部 */
-#footer{font-size:14px;margin-top:8px;}
+#footer{margin-top:8px;}
 	#footer a{color:#999;}
 		#footer a:hover{color:#4cb5ff;}
 	#contact{overflow:hidden;}

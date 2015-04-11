@@ -53,7 +53,7 @@
     
 		    //组装GET请求的URL参数
 		    $queryString = '';
-    
+
 		    while (list($key, $val) = each($params))
 		    {
 		        $codes .= ($key . $val);
@@ -70,17 +70,17 @@
     
 		    // 设置你要访问的URL
 		    curl_setopt($curl, CURLOPT_URL, $url);
-    
+
 		    // 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
 		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		    curl_setopt($curl, CURLOPT_ENCODING, 'UTF-8');
     
 		    // 运行cURL，请求API
 		    $data = json_decode(curl_exec($curl), true);
-    
+
 		    // 关闭URL请求
 		    curl_close($curl);
-	
+
 			if($this->input->is_ajax_request()):
 				// 直接返回数据
 				echo json_encode($data);
