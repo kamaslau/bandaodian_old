@@ -9,11 +9,13 @@
 			$this->load->database();
 		}
 		
-		//获取所有分类，或根据id获取特定分类
-		public function select($class = FALSE)
+		// 获取所有分类，或根据id获取特定分类
+		public function select($id = NULL)
 		{
-			if($class == 'main'):
-				$this->db->distinct('name');
+			if($id === 'main'):
+				$this->db->select('DISTINCT(name)');
+			elseif ($id != NULL):
+				$this->db->where('category_id', $id); 
 			endif;
 			$query = $this->db->get($this->table_name);
 			return $query->result_array();

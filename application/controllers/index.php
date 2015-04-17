@@ -16,11 +16,13 @@
 		public function index()
 		{
 			$data['class'] = 'home';
-			
-			$data['category'] = $this->category_model->select('main');
-			$data['region'] = $this->region_model->select('main');
+
+			$data['categories'] = $this->category_model->select('main');
+			$data['sub_categories'] = $this->category_model->select();
+			$data['regions'] = $this->region_model->select('main');
+			$data['sub_regions'] = $this->region_model->select();
 			$data['groupbuy'] = $this->groupbuy_model->select();
-			
+
 			$data['browser'] = $this->getBrowser();
 			$data['os'] = $this->getOs();
 			
@@ -30,7 +32,7 @@
 			$this->load->view('templates/footer', $data);
 		}
 		
-		/*判断浏览器类型及版本*/
+		/* 判断浏览器类型及版本 */
 		public function getBrowser()
 		{
 			$user_agent = $this->input->server('HTTP_USER_AGENT');

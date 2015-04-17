@@ -1,16 +1,23 @@
 <nav id=groupbuyfilter>
-        <div class=single>
-            <div class=title>分类</div>
-            <div class=list>
-                <ul class=category>
-					<li><a href=#>全部</a></li>
-					<?php foreach ($category as $category_item): ?>
-					<li><a title="青岛<?php echo $category_item['name']; ?>团购" href=#><?php echo $category_item['name']; ?></a></li>
-					<?php endforeach; ?>
-				</ul>
-            </div>
+    <div class=single>
+        <div class=title>分类</div>
+        <div class=list>
+            <ul class=category>
+				<li><a href=#>全部</a></li>
+				<?php foreach ($categories as $category_item): ?>
+				<li><a title="青岛<?php echo $category_item['name']; ?>团购" href=#><?php echo $category_item['name']; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
         </div>
-
+        <div class=list>
+            <ul class=category>
+				<li><a href=#>全部</a></li>
+				<?php foreach ($sub_categories as $category_item): ?>
+				<li><a title="青岛<?php echo $category_item['sub_name']; ?>团购" href=#><?php echo $category_item['sub_name']; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+        </div>
+    </div>
 </nav>
 <div id=groupbuysorter>
     <ul class=basic>

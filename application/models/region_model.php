@@ -9,12 +9,15 @@
 			$this->load->database();
 		}
 		
-		//获取所有会员，或根据id获取特定会员
-		public function select($class = FALSE)
+		// 获取所有地区，或根据id获取特定地区
+		public function select($id = NULL)
 		{
-			if($class == 'main'):
-				$this->db->distinct('district');
+			if ($id === 'main'):
+				$this->db->select('DISTINCT(district)');
+			elseif ($id != NULL):
+				$this->db->where('region_id', $id); 
 			endif;
+			
 			$query = $this->db->get($this->table_name);
 			return $query->result_array();
 		}

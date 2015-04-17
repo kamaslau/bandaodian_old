@@ -13,7 +13,7 @@
 		<title><?php echo ($class != 'home')?$title.' | 半岛店 - 精彩近在身边':'半岛店 - 精彩近在身边'; ?></title>
 		<meta name=description content="<?php if(isset($title)){echo $title;} ?>半岛店是一个本地生活平台，为你精挑细选青岛商家的会员福利、优惠券、团购信息等优惠活动，以及本地淘宝/天猫卖家店铺的优质精品。">
 		<meta name=keywords content="<?php if(isset($title)){echo $title;} ?>青岛团购,青岛团购网,青岛零食,青岛超市,青岛网上超市,青岛商城,青岛网上商城,青岛购物,青岛网上购物,青岛优惠,青岛打折,青岛淘宝,青岛天猫,青岛实体店,青岛淘宝实体店,青岛淘宝店铺,青岛店铺">
-		<meta name=version content="revision20150411">
+		<meta name=version content="revision20150418">
 		<meta name=author content="刘亚杰">
 		<meta name=copyright content="刘亚杰,森思壮SenseStrong">
 		<meta name=contact content="lianxi@sensestrong.com, http://weibo.com/sensestrong">

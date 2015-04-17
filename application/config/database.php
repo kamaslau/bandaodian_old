@@ -11,7 +11,7 @@
 	$db['aliyun_rds']['database'] = 'bandaodian';
 	$db['aliyun_rds']['dbdriver'] = 'mysql';
 	$db['aliyun_rds']['dbprefix'] = '';
-	$db['aliyun_rds']['pconnect'] = TRUE;
+	$db['aliyun_rds']['pconnect'] = FALSE;
 	$db['aliyun_rds']['db_debug'] = TRUE;
 	$db['aliyun_rds']['cache_on'] = FALSE;
 	$db['aliyun_rds']['cachedir'] = '';
@@ -28,7 +28,7 @@
 	$db['local']['database'] = 'bandaodian';
 	$db['local']['dbdriver'] = 'mysql';
 	$db['local']['dbprefix'] = '';
-	$db['local']['pconnect'] = TRUE;
+	$db['local']['pconnect'] = FALSE;
 	$db['local']['db_debug'] = TRUE;
 	$db['local']['cache_on'] = FALSE;
 	$db['local']['cachedir'] = '';

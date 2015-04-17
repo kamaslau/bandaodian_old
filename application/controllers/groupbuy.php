@@ -67,10 +67,8 @@
 		    $url = URL . '?appkey=' . APPKEY . '&sign=' . $sign . $queryString;
     
 		    $curl = curl_init();
-    
 		    // 设置你要访问的URL
 		    curl_setopt($curl, CURLOPT_URL, $url);
-
 		    // 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
 		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		    curl_setopt($curl, CURLOPT_ENCODING, 'UTF-8');

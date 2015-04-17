@@ -8,7 +8,7 @@
 	//设置时区
 	date_default_timezone_set('Asia/Shanghai');
 
-	$config['base_url']	= '';
+	$config['base_url']	= 'http://www.bandaodian.com';
 
 	$config['index_page'] = 'index.php';
 
@@ -66,7 +66,7 @@
 
 	$config['compress_output'] = FALSE;
 
-	$config['time_reference'] = 'local';
+	$config['time_reference'] = 'Asia/Shanghai';
 
 	$config['rewrite_short_tags'] = FALSE;
 
