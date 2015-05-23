@@ -22,12 +22,16 @@
 			);
 			$sort = $this->input->get('sort', TRUE);
 			$page = $this->input->get('page', TRUE);
+			$latitude = $this->input->get('latitude', TRUE);
+			$longitude = $this->input->get('longitude', TRUE);
 
 			$params['sort'] = !empty($sort)? $sort: 1;
 			$params['page'] = !empty($page)? $page: 1;
+			!empty($latitude)? $params['latitude'] = $latitude: NULL;
+			!empty($longitude)? $params['longitude'] = $longitude: NULL;
 
 			//循环检查保存入cookie的筛选器
-			$options = array('category', 'region', 'keyword', 'latitude', 'longitude');
+			$options = array('category', 'region', 'keyword');
 			for($i=0; $i<count($options); $i++)
 			{
 				$option = $options[$i];//提取单一筛选器并检查是否已通过cookie定义，若有则纳入待搜索参数
@@ -44,16 +48,14 @@
 			}
 
 			//根据传入的各参数获取远程API数据（大众点评developer.dianping.com）
-
 		    //按照参数名排序
 		    ksort($params);
-    
+
 		    //连接待加密的字符串
 		    $codes = APPKEY;
-    
+
 		    //组装GET请求的URL参数
 		    $queryString = '';
-
 		    while (list($key, $val) = each($params))
 		    {
 		        $codes .= ($key . $val);
@@ -79,6 +81,8 @@
 		    // 关闭URL请求
 		    curl_close($curl);
 
+			echo json_encode($data);
+			/*
 			if($this->input->is_ajax_request()):
 				// 直接返回数据
 				echo json_encode($data);
@@ -88,6 +92,7 @@
 				$this->save($data);
 				echo '获取团购成功';
 			endif;
+			*/
 		}
 		
 		// 将获取到的数据转存到数据库中

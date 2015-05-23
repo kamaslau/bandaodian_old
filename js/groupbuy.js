@@ -26,9 +26,6 @@ $(function(){
 		var latitude = position.coords.latitude;//纬度
 		var longitude = position.coords.longitude;//经度
 		$.cookie('latitude',latitude);$.cookie('longitude',longitude);
-		alert('维度：' + latitude + '经度：' + longitude);
-		$('#geoInfo').html('<a href="http://api.map.baidu.com/direction?origin=' + position.coords.latitude + ',' + position.coords.longitude + '&destination=一圣品海鲜舫延安三路店&mode=driving&region=青岛&output=html&src=yourCompanyName|yourAppName&coord_type=wgs84">查看地图</a>');
-		//一般包含GPS芯片或者北斗芯片的手持设备获取的经纬度为wgs84坐标系统，百度默认bd09坐标系统
 	}
 	
 	function showError(error)
@@ -157,7 +154,9 @@ $(function(){
 		//参数默认值
 		sort = typeof(sort)=='undefined'?1:sort;
 		page = typeof(page)=='undefined'?1:page;
-		var params = {'sort':sort, 'page':page};
+		latitude = typeof($.cookie('latitude'))=='undefined'?'':latitude;
+		longitude = typeof($.cookie('longitude'))=='undefined'?'':longitude;
+		var params = {'sort':sort, 'page':page, 'latitude':latitude, 'longitude':longitude};
 
 		// 若cookie中有搜索关键词,显示关键词
 		if($.cookie('keyword') != '')

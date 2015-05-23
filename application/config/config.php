@@ -1,6 +1,7 @@
 <?php
 	if(!defined('BASEPATH')) exit('此文件不可被直接访问');
 
+	header('Access-Control-Allow-Origin:*'); // 允许跨域
 	//大众点评API参数
 	define('APPKEY', '54421980');
 	define('SECRET', 'cfab13b00c0c4e00923f11e5336f1dfd');
