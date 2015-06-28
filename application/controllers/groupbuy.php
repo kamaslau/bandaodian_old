@@ -1,15 +1,51 @@
 <?php
 	if(!defined('BASEPATH')) exit('此文件不可被直接访问');
 
-	// 搜索团购
-	// http://developer.dianping.com/app/api/v1/deal/find_deals
+	/**
+	* Groupbuy Class
+	*
+	* @author Kamas 'Iceberg' Lau <kamaslau@outlook.com>
+	* @copyright SenseStrong <www.sensestrong.com>
+	*/
 	class Groupbuy extends CI_Controller
 	{
 		public function __construct()
 		{
 			parent::__construct();
+		}
 
-			define('URL', 'http://api.dianping.com/v1/deal/find_deals');
+		// 团购详情
+		public function detail($groupbuy_id = NULL)
+		{
+			$params['deal_id'] = $groupbuy_id;
+			//根据传入的各参数获取远程API数据（大众点评developer.dianping.com）
+		    //按照参数名排序
+		    ksort($params);
+
+		    //连接待加密的字符串
+		    $codes = APPKEY;
+
+		    //组装GET请求的URL参数
+		    $queryString = '';
+		    while (list($key, $val) = each($params))
+			{
+		        $codes .= ($key. $val);
+		        $queryString .= ('&'. $key. '='. urlencode($val));
+			}
+    
+		    $codes .= SECRET;
+		    $sign = strtoupper(sha1($codes));
+			$url = URL. 'deal/get_single_deal'. '?appkey='. APPKEY. '&sign='. $sign. $queryString; // 团购详情
+		    $result = $this->curl->go($url, $params, 'array', 'get');
+			
+			$data['title'] = $result['deals'][0]['title']. $result['deals'][0]['description']. '团购详情';
+			$data['class'] = 'groupbuy detail';
+			$data['content'] = $result['deals'][0];
+			
+			$this->load->view('templates/header', $data);
+			$this->load->view('groupbuy/detail', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('templates/footer', $data);
 		}
 
 		// 查找团购首页
@@ -32,18 +68,16 @@
 
 			//循环检查保存入cookie的筛选器
 			$options = array('category', 'region', 'keyword');
-			for($i=0; $i<count($options); $i++)
+			for ($i=0; $i<count($options); $i++)
 			{
 				$option = $options[$i];//提取单一筛选器并检查是否已通过cookie定义，若有则纳入待搜索参数
-				if(!empty($_COOKIE[$option]))
-				{
+				if (!empty($_COOKIE[$option])):
 					$params[$option] = $_COOKIE[$option];
-				}
+				endif;
 				/*
-				if(!empty($this->input->cookie($option)))
-				{
+				if(!empty($this->input->cookie($option))):
 					$params[$option] = $this->input->cookie($option);
-				}
+				endif;
 				*/
 			}
 
@@ -57,39 +91,25 @@
 		    //组装GET请求的URL参数
 		    $queryString = '';
 		    while (list($key, $val) = each($params))
-		    {
-		        $codes .= ($key . $val);
-		        $queryString .= ('&' . $key . '=' . urlencode($val));
-		    }
+			{
+		        $codes .= ($key. $val);
+		        $queryString .= ('&'. $key. '='. urlencode($val));
+			}
     
 		    $codes .= SECRET;
-    
 		    $sign = strtoupper(sha1($codes));
-    
-		    $url = URL . '?appkey=' . APPKEY . '&sign=' . $sign . $queryString;
-    
-		    $curl = curl_init();
-		    // 设置你要访问的URL
-		    curl_setopt($curl, CURLOPT_URL, $url);
-		    // 设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
-		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		    curl_setopt($curl, CURLOPT_ENCODING, 'UTF-8');
-    
-		    // 运行cURL，请求API
-		    $data = json_decode(curl_exec($curl), true);
+		    $url = URL. 'deal/find_deals'. '?appkey='. APPKEY. '&sign='. $sign. $queryString; // 团购详情
+			$result = $this->curl->go($url, $params, 'array', 'get');
 
-		    // 关闭URL请求
-		    curl_close($curl);
-
-			echo json_encode($data);
+			echo json_encode($result);
 			/*
 			if($this->input->is_ajax_request()):
 				// 直接返回数据
-				echo json_encode($data);
+				echo json_encode($result);
 				
 			else:
 				// 保存数据
-				$this->save($data);
+				$this->save($result);
 				echo '获取团购成功';
 			endif;
 			*/

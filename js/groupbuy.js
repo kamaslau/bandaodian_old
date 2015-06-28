@@ -1,9 +1,10 @@
-// 文件名   groupbuy.js
-// 文件用途 半岛店团购js代码
-// 作者    刘亚杰
-// 作者微博 http://weibo.com/liuyajie728
-// 版权    个人所有,未经授权禁止使用
-
+/**
+ * 文件名   groupbuy.js
+ * 文件用途 半岛店团购js代码
+ * 作者    刘亚杰
+ * 作者微博 http://weibo.com/kamas728
+ * 版权    个人所有,未经授权禁止使用
+**/
 $(function(){
 	//初始化页面
 	getGroupbuy();
@@ -154,9 +155,10 @@ $(function(){
 		//参数默认值
 		sort = typeof(sort)=='undefined'?1:sort;
 		page = typeof(page)=='undefined'?1:page;
-		latitude = typeof($.cookie('latitude'))=='undefined'?'':latitude;
-		longitude = typeof($.cookie('longitude'))=='undefined'?'':longitude;
-		var params = {'sort':sort, 'page':page, 'latitude':latitude, 'longitude':longitude};
+		//latitude = typeof($.cookie('latitude'))=='undefined'?'':latitude;
+		//longitude = typeof($.cookie('longitude'))=='undefined'?'':longitude;
+		//var params = {'sort':sort, 'page':page, 'latitude':latitude, 'longitude':longitude};
+		var params = {'sort':sort, 'page':page};
 
 		// 若cookie中有搜索关键词,显示关键词
 		if($.cookie('keyword') != '')
@@ -179,7 +181,7 @@ $(function(){
 						'	<h2><a title="' + deal.description + '" href="' + deal.deal_url+'" target=_blank>'+deal.title+'</a></h2>' +
 						'	<div class=detail>' +
 						'		<div class=price><span class=groupprice>¥' + deal.current_price + '</span><br><span class=tagprice>原价 ¥' + deal.list_price + '</span>, <span class=amount>' + deal.purchase_count + '人已购买</span></div>' + 
-						'		<a class=go title="' + deal.title + '" href="'+deal.deal_url + '" target=_blank>去看看</a>' + 
+					   '		<a class=go title="' + deal.title + '" href="http://www.bandaodian.com/groupbuy/'+deal.deal_id + '" target=_blank>去看看</a>' + 
 						'	</div>' +
 						'</li>'
 					);

@@ -6,13 +6,13 @@
 				<li><a href=#>全部</a></li>
 				<?php foreach ($categories as $category_item): ?>
 				<li><a title="青岛<?php echo $category_item['name']; ?>团购" href=#><?php echo $category_item['name']; ?></a></li>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 			</ul>
             <ul class=sub_category>
 				<li><a href=#>全部</a></li>
 				<?php foreach ($sub_categories as $category_item): ?>
 				<li><a title="青岛<?php echo $category_item['sub_name']; ?>团购" href=#><?php echo $category_item['sub_name']; ?></a></li>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 			</ul>
         </div>
     </div>
@@ -23,13 +23,13 @@
 				<li><a href=#>全部</a></li>
 				<?php foreach ($regions as $region_item): ?>
 				<li><a title="青岛<?php echo $region_item['district']; ?>团购" href=#><?php echo $region_item['district']; ?></a></li>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 			</ul>
             <ul class=district>
 				<li><a href=#>全部</a></li>
 				<?php foreach ($sub_regions as $region_item): ?>
 				<li><a title="青岛<?php echo $region_item['area']; ?>团购" href=#><?php echo $region_item['area']; ?></a></li>
-				<?php endforeach; ?>
+				<?php endforeach ?>
 			</ul>
         </div>
     </div>

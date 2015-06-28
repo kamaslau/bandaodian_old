@@ -6,9 +6,10 @@
 	$route['r/(:any)'] = 'r/index/$1';
 
 	$route['groupbuy'] = 'groupbuy/index';
-	$route['groupbuy/(:any)'] = 'groupbuy/index/$1';
+	$route['groupbuy/(:any)'] = 'groupbuy/detail/$1';
 
 	$route['sms'] = 'sms/index';
+	$route['sms/(:any)'] = 'sms/index/$1';
 
 	$route['from/(:any)'] = 'from/index/$1';
 
