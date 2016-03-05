@@ -40,7 +40,7 @@
 				$this->load->view('templates/header', $data);
 				$this->load->view('user/register');
 				$this->load->view('templates/footer');
-			
+
 			else:
 				if($this->user_model->user_register()):
 					$data['user'] = $this->user_model->user_login();

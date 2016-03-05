@@ -10,3 +10,4 @@
 	<a title="<?php echo $content['description'] ?>" href="<?php echo $content['deal_url'] ?>" target=_blank>立即抢购</a>
 	<pre><?php echo $content['details'] ?></pre>
 </div>
+<?php var_dump($content) ?>
